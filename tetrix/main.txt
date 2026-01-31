@@ -1,0 +1,37 @@
+﻿import pygame, sys
+from random import choice
+from copy import deepcopy
+
+
+def run():
+    class Figure:
+        def __init__(self, L, color):
+            self.color = color
+            self.cord = L
+            self.pos = 0
+
+    def squere(i, j, color):
+        pygame.draw.rect(screen, color, (j * HEIGHT + j, i * HEIGHT + i, HEIGHT, HEIGHT))
+
+    screen = pygame.display.set_mode((10 * HEIGHT + 10, k * HEIGHT + k))  # главный экран
+    while True:
+        clock.tick(FPS)
+        screen.fill((64, 64, 64))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+        for col in range(k):
+            for row in range(10):
+                squere(col, row, BACKGROUND)
+        pygame.display.flip()
+
+
+HEIGHT = 43  # кол-во пикселей в одной клетке
+BACKGROUND = (94, 94, 94)  # Задний фон
+k = 15  # кол-во рядов
+FPS = 20
+pygame.init()
+pygame.display.set_caption("Tetrix")
+pygame.mixer.init()
+clock = pygame.time.Clock()
+run()
